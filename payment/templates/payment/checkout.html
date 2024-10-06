@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Header-->
+<header class="py-5" style="background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">CHECK OUT</h1>
+            <p class="lead fw-normal text-white-50 mb-0">REVIEW YOUR ORDER</p>
+        </div>
+    </div>
+</header>
+<br>
+
+<div class="container">
+    <div class = "row">
+        <div class = "col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    SUMMARY
+                </div>
+                <div class="card-body">
+                    {% for product in cart_products %}
+                        {{product.name}}:
+                        {% if product.is_sale %}
+                            ${{product.sale_price}}
+                        {% else%}
+                            ${{product.price}}  
+                        {% endif %}
+
+                        <br>
+                        <small>Quantity:
+                        {% for key, value in quantities.items %}
+                            {% if key == product.id|slugify %}
+                                {{ value }}
+                            {% endif %}
+                        {% endfor %}</small>
+                        <br><br>
+                    {% endfor %}
+                    Total : $   {{ totals }}
+                    <br><br>
+                    <a href="{% url 'cart_summary' %}" class="btn btn-sm btn-outline-secondary ">Update Items</a>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="card">
+                <div class="card-header">
+                    Shipping Info
+                </div>
+                    <div class="card-body">
+                        <form method="POST" action="{% url 'billing_info' %}">
+                            {% csrf_token %}
+                            {% comment %}  Cross site request forgery token , so hackers cant get us {% endcomment %}
+                            {{ shipping_form.as_p }}
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-secondary">Continue to Billing</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+{% endblock %}

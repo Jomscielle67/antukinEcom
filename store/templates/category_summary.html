@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Header-->
+<header class="py-5" style="background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">CATEGORIES</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Choose Your Category Below....</p>
+        </div>
+    </div>
+</header>
+
+<div class = "container">
+    <div class = "row">
+        <center>
+            <div class = "col-8">       
+                <br><br>       
+                {% for category in categories %}
+                <h3><a class="dropdown-item" href="{% url 'category' category %}">{{category}}</a></h3>
+                {% endfor %}
+                <br><br><br><br><br><br>
+            </div>
+        </center>
+    </div>
+</div>
+{% endblock %}

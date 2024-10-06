@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Header-->
+<header class="py-5" style="background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">UPDATE USER INFO</h1>
+            <p class="lead fw-normal text-white-50 mb-0">UPDATE USER INFO</p>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <br><br>
+            <strong>Billing information</strong>
+            <br><br>
+            <form method="POST" action="{% url 'update_info' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br><br>
+
+                <strong>Shipping information</strong>
+                <br><br>
+                {{ shipping_form.as_p}}
+
+                <br><br>
+                <button type="submit" class="btn btn-secondary">
+                    Update Profile
+                </button>
+            </form>
+            <br><br>
+            <br><br>
+            <br><br>
+            <br><br>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

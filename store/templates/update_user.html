@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Header-->
+<header class="py-5" style="background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">UPDATE PROFILE</h1>
+            <p class="lead fw-normal text-white-50 mb-0">UPDATE USER PROFILE</p>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <br><br>
+            <form method="POST" action="{% url 'update_user' %}">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                <br><br>
+                <button type="submit" class="btn btn-secondary">
+                    Update Profile
+                </button>
+            </form>
+            <br><br>
+            <!-- Changed the class to btn-success for green color -->
+            <a href="{% url 'update_password' %}" class="btn btn-success">Update Password</a>
+            <br><br>
+            <br><br>
+            <br><br>
+            <br><br>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
