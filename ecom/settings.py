@@ -21,8 +21,8 @@ DEBUG = False
 # ALLOWED_HOSTS = ['antukinecom-production.up.railway.app', 'https://antukinecom-production.up.railway.app']
 # CSRF_TRUSTED_ORIGINS =  ['antukinecom-production.up.railway.app', 'https://antukinecom-production.up.railway.app']
 
-ALLOWED_HOSTS = ['antukinecom-production.up.railway.app']
-CSRF_TRUSTED_ORIGINS = ['https://antukinecom-production.up.railway.app']
+ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = []
 
 
 # Application definition
@@ -86,10 +86,8 @@ DATABASES = {
         'USER': 'postgres',
         # 'PASSWORD': os.environ.get('DB_PASSWORD_YO'),
         'PASSWORD': os.environ['DB_PASSWORD_YO'],
-        # 'PASSWORD': 'TEggsuBOlJuRuzRbKThmeGvErcwIpKpx',
         'HOST': 'junction.proxy.rlwy.net',
         'PORT': '46361',
-        # 'default': dj_database_url.config(default=os.environ.get('Postgres.DATABASE_URL'),conn_max_age=1800)
     }
 }
 
@@ -135,7 +133,7 @@ STATICFILES_DIRS = ['static/']
 
 #white noise static stuff
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_ROOT = BASE_DIR/'staticfiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
