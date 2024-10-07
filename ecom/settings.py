@@ -21,8 +21,8 @@ DEBUG = False
 # ALLOWED_HOSTS = ['antukinecom-production.up.railway.app', 'https://antukinecom-production.up.railway.app']
 # CSRF_TRUSTED_ORIGINS =  ['antukinecom-production.up.railway.app', 'https://antukinecom-production.up.railway.app']
 
-ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = []
+ALLOWED_HOSTS = ['antukinecom-production-3e63.up.railway.app', 'https://antukinecom-production-3e63.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['antukinecom-production-3e63.up.railway.app', 'https://antukinecom-production-3e63.up.railway.app']
 
 
 # Application definition
