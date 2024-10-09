@@ -54,6 +54,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     description = models.CharField(max_length=250, default='', blank=True, null=True)
     image = models.ImageField(upload_to='uploads/product/')
+    image_url = models.URLField(max_length=500, blank=True, null=True)  # Store the image URL from Google Drive
     # Add sale Stuff
     is_sale = models.BooleanField(default = False)
     sale_price = models.DecimalField(default=0, decimal_places=2, max_digits=6)
