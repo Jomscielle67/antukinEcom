@@ -22,7 +22,7 @@ DEBUG = False
 # CSRF_TRUSTED_ORIGINS =  ['antukinecom-production.up.railway.app', 'https://antukinecom-production.up.railway.app']
 
 ALLOWED_HOSTS = ['antukinecom-production-3e63.up.railway.app', 'https://antukinecom-production-3e63.up.railway.app']
-CSRF_TRUSTED_ORIGINS = [os.environ.get('ALLOWED_HOST')]
+# CSRF_TRUSTED_ORIGINS = [os.environ.get('ALLOWED_HOST')]
 CSRF_TRUSTED_ORIGINS = [
     'http://antukinecom-production-3e63.up.railway.app',
     'https://antukinecom-production-3e63.up.railway.app',
