@@ -29,6 +29,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'category', 'is_sale', 'sale_price')
     fields = ('name', 'price', 'category', 'description', 'image_url', 'is_sale', 'sale_price')  # Use image_url field
 
+
 # Unregister the old User admin
 admin.site.unregister(User)
 
