@@ -1,6 +1,13 @@
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from django.core.exceptions import ImproperlyConfigured
+
+def get_env_variable(var_name):
+    try:
+        return os.environ[var_name]
+    except KeyError:
+        raise ImproperlyConfigured(f"The {var_name} environment variable is not set.")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,17 +88,28 @@ WSGI_APPLICATION = 'ecom.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         # 'ENGINE': 'django.db.backends.sqlite3',
+#         # 'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         # 'PASSWORD': os.environ.get('DB_PASSWORD_YO'),
+#         'PASSWORD': os.environ['DB_PASSWORD_YO'],
+#         'HOST': 'junction.proxy.rlwy.net',
+#         'PORT': '46361',
+#     }
+# } shet talaga
+
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        # 'PASSWORD': os.environ.get('DB_PASSWORD_YO'),
-        'PASSWORD': os.environ['DB_PASSWORD_YO'],
-        'HOST': 'junction.proxy.rlwy.net',
-        'PORT': '46361',
+        'NAME': os.environ.get('DB_NAME', 'railway'),  # Defaults to 'railway' if not set
+        'USER': os.environ.get('DB_USER', 'postgres'),  # Defaults to 'postgres' if not set
+        'PASSWORD': os.environ.get('DB_PASSWORD_YO'),   # Fetches from environment variables
+        'HOST': os.environ.get('DB_HOST', 'junction.proxy.rlwy.net'),  # Defaults to Railway host
+        'PORT': os.environ.get('DB_PORT', '46361'),  # Defaults to Railway port
     }
 }
 
