@@ -62,7 +62,10 @@
                 </div>
                 <br><br>
 
-               
+                {% if paypal_form %}
+                {{ paypal_form.render }}
+                {% endif %}
+            
 
                 <br><br>
                 
