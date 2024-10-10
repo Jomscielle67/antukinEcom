@@ -3,13 +3,19 @@ from store.models import Product, Profile
 class Cart:
     def __init__(self, request):
         self.session = request.session
-        cart = self.session.get('cart')  # Use 'cart' key for session storage instead of 'session_key'
-        if not cart:
-            cart = self.session['cart'] = {}  # Initialize cart if it doesn't exist
+        
+        #get request
+        self.request = request
+        
+        # Get current session key if it exists.
+        cart = self.session.get('session_key')
+        
+        # If the user is new, no session key! Create one.
+        if 'session_key' not in self.session:
+            cart = self.session['session_key'] = {}
+            
+        # Make sure the cart is available in all pages of the site.
         self.cart = cart
-
-    # The rest of the methods remain the same
-
 
     def db_add(self, product, quantity):
         product_id = str(product)
