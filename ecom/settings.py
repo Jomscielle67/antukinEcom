@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-from dotenv import load_dotenv
 from django.core.exceptions import ImproperlyConfigured
 
 def get_env_variable(var_name):
@@ -13,6 +12,7 @@ def get_env_variable(var_name):
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 #Load our environental variables
+from dotenv import load_dotenv
 load_dotenv()
 
 
@@ -28,13 +28,14 @@ DEBUG = False
 # ALLOWED_HOSTS = ['antukinecom-production.up.railway.app', 'https://antukinecom-production.up.railway.app']
 # CSRF_TRUSTED_ORIGINS =  ['antukinecom-production.up.railway.app', 'https://antukinecom-production.up.railway.app']
 
-ALLOWED_HOSTS = ['antukinecom-production-3e63.up.railway.app', 'antukinecom.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['antukinecom-production-3e63.up.railway.app', 'antukinecom.onrender.com', 'localhost', '127.0.0.1', 'localhost', 'dc4f-136-158-65-170.ngrok-free.app']
 
 # CSRF_TRUSTED_ORIGINS = [os.environ.get('ALLOWED_HOST')]
 CSRF_TRUSTED_ORIGINS = [
     'http://antukinecom-production-3e63.up.railway.app',
     'https://antukinecom-production-3e63.up.railway.app',
-    'https://antukinecom.onrender.com'
+    'https://antukinecom.onrender.com',
+    'https://dc4f-136-158-65-170.ngrok-free.app'
 ]
 
 
@@ -99,14 +100,16 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
+        #password pag localhost
         # 'PASSWORD': os.environ.get('DB_PASSWORD_YO'),
+        #password pag online db
         'PASSWORD': os.environ['DB_PASSWORD_YO'],
         'HOST': 'junction.proxy.rlwy.net',
         'PORT': '46361',
     }
 } 
 
-# DATABASES = {
+# DATABASES = { 
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': os.environ.get('DB_NAME', 'railway'),  # Defaults to 'railway' if not set
